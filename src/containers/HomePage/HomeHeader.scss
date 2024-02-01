@@ -1,5 +1,217 @@
-.home-header-container{
-    width: 100%;
-    height: 60px;
-    border:  1 solid red;
+@import "../../styles/common.scss";
+
+.container-page{
+    padding: 0 5%;
+
+    .home-header-container{
+        width: 100%;
+        height: 60px;
+
+        .home-header-content{
+            width: 100%;
+            height: 100%;
+            display: flex;
+    
+            .left-content{
+                width: 25%;
+                display: flex;
+                align-items: center;
+                padding: 0.5%;
+                i{
+                    color: grey;
+                    font-size: 25px;
+                    cursor: pointer;
+                    margin-right: 5px;
+                }
+              
+                .header-logo{
+                    background: url(../../assets/images/logoBooking.png);
+                    height: 100%;
+                    width: 100%;
+                    background-size: contain;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    cursor: pointer;
+                }
+    
+            }
+    
+            .center-content{
+                width: 50%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                .child-content{
+    
+                    .sub-title{
+                        font-weight: 400;
+                        font-size: 12px;   
+                    }
+                    &:hover{
+                        color: $text-hover;
+                        cursor: pointer;
+                    }
+                }               
+            }
+    
+            .right-content{
+                width: 25%;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+    
+                .support{
+                    padding-right: 7%;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+
+                    i{
+                        font-size: 15px;
+                        color: $colormain;
+                        margin-right: 4px
+                    }
+                    &:hover{
+                        //color: $text-hover;
+                        font-weight: 550;
+                        cursor: pointer;
+                    }
+                }
+                .language{
+                    cursor: pointer;
+                    opacity: 0.4;
+                    font-weight: 550;
+                    
+                    &.active{
+                        opacity: 1;
+                        color: $colormain;
+                    }
+                    &:hover{
+                        opacity: 0.8;
+                        cursor: pointer;
+                    }
+                }
+
+                .language-en{
+                    margin-left: 2%;
+                }
+            }
+        }
+    
+    }
+    
+    .home-header-banner{
+        background: url(../../assets/images/background6.jpeg) ;
+        
+        height: 600px;
+        background-repeat: no-repeat; 
+        background-position: center center;
+        background-size: cover;
+        background-position: 0% 25%;
+    
+        .content-up{
+            padding-top: 2%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255, 0.3), rgba(8, 184, 243, 0.1));
+            height: 50%;
+            width: 100%;
+            .title1{
+                text-align: center;
+                font-size: 28px;
+                color: $colormain;
+            }
+        
+            .title2{
+                text-align: center;
+                font-size: 35px;
+                font-weight: 600;
+                text-shadow: 1px 1px 1px white;
+                color: $colormain;
+            }     
+        }
+    
+        .content-between{
+            background: linear-gradient(360deg, rgba(255,255,255,0.1), rgba(8, 184, 243, 0.1));
+            height: 25%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            .search{
+                width: 35%;
+                border: none;
+                border-radius: 25px;
+                background-color: rgb(245, 217, 92);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto; // để canh giữa div
+                padding: 10px;
+    
+                i{
+                    margin: 0 5px;
+                    font-size: 15px;
+                }
+    
+                input{
+                    height: 30px;
+                    width: 100%;
+                    background: transparent;
+                    border: none;
+                    outline: none; //bỏ border khi click vào textbox
+                    font-size: 15px;
+                }
+            }
+        }
+    
+        .content-down{
+            //background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(8, 184, 243, 0.8));
+            background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9));
+            height: 25%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            gap: 1%;
+            padding-top: 3%;
+
+            .option-child{
+                width: 13%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+              
+                .icon-child{
+                    background: white;
+                    width: 40px;
+                    height: 40px;
+                    padding: 10px;
+                    border-radius: 50%;
+                    margin: 0 auto;
+                    text-align: center;
+
+                    i{
+                        color: $colormain;
+                        font-size: 20px;
+                        &:hover{
+                            color: $text-hover;
+                            cursor: pointer;
+                        }                 
+                    }
+                }
+
+                .text-child{
+                    color: $colormain;
+                    font-size: 14px;
+                    font-weight: 550;
+                    text-align: center;
+                    &:hover{
+                        color: $text-hover;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }         
+    }
 }
+

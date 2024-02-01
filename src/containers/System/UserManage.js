@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import {getUsers, createNewUserService, 
+import {getAllUsers, createNewUserService, 
     deleteUserService, editUserService} from '../../services/userService';
 import ModalUser from './ModalUser';
 import ModalEditUser from './ModalEditUser';
 import {emitter} from '../../utils/emitter';
+
+    /** Life cycle
+     * Run component:
+     - 1. Run constructor -> init state
+     - 2. Did mount (only one time) -> set state: bornl unmount
+     - 3. Render (re-render)
+    */
+
 
 class UserManage extends Component {
     constructor(props){
@@ -24,7 +32,8 @@ class UserManage extends Component {
     }
 
     getUsersFromReact = async() => {
-        let response = await getUsers('ALL');
+        //let response = await getUsers('ALL');
+        let response = await getAllUsers();
         if(response && response.errCode === 0){
             this.setState({
                 arrUsers: response.users
@@ -111,13 +120,6 @@ class UserManage extends Component {
         }
     }
 
-
-    /** Life cycle
-     * Run component:
-     - 1. Run constructor -> init state
-     - 2. Did mount (only one time) -> set state: bornl unmount
-     - 3. Render (re-render)
-     */
 
     render() {
         let arrUsers = this.state.arrUsers;

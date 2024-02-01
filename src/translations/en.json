@@ -1,4 +1,30 @@
 {
+    "home_header":{
+        "specialty": "Specialty",
+        "search_doctor_by_specialty": "Search doctor",
+        "health_facility": "Health Facility",
+        "select_clinic_room": "Select Clinic Room",
+        "doctor": "Doctor",
+        "select_doctor": "Select Doctor",
+        "checkup_package": "Checkup Package",
+        "general_health_check": "General Health Check",
+        "support": "Support"
+
+
+    },
+
+    "home_banner": {
+        "slogan1": "Healthy Living, Happy Living",
+        "slogan2": "Champion Your Health Today!",
+        "search_specialty": "Search Specialty",
+        "specialized_examination": "specialized examination",
+        "remote_examination": "Remote Examination",
+        "general_examination": "General Examination",
+        "medical_tests": "Medical Tests",
+        "mental_health": "Manage Health",
+        "dental_examination": "Dental Examination"
+    },
+
     "common": {
         "add": "Add",
         "edit": "Edit",
