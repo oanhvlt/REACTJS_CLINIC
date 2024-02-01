@@ -46,8 +46,12 @@ class HomeHeader extends Component {
                         <div className='support'>
                             <i className="fas fa-question-circle"></i> <FormattedMessage id="home_header.support"/>
                         </div>
-                        <div className={language === LANGUAGES.VI ? 'language active':'language'}><span onClick={ ()=>this.changeLanguage(LANGUAGES.VI) }>VN</span></div>
-                        <div className={language === LANGUAGES.EN ? 'language active language-en ':'language language-en'}><span onClick={ ()=>this.changeLanguage(LANGUAGES.EN) }>EN</span></div>
+                        <div className={language === LANGUAGES.VI ? 'language active':'language'}>
+                            <span onClick={ ()=>this.changeLanguage(LANGUAGES.VI) }>VN</span>
+                        </div>
+                        <div className={language === LANGUAGES.EN ? 'language active language-en ':'language language-en'}>
+                            <span onClick={ ()=>this.changeLanguage(LANGUAGES.EN) }>EN</span>
+                        </div>
                     </div>
                 </div>
             </div>
