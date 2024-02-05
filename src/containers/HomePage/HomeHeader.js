@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './HomeHeader.scss';
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../utils';
 import {changeLanguageApp} from '../../store/actions';
@@ -17,7 +16,7 @@ class HomeHeader extends Component {
         let language = this.props.language;
 
         return (
-        <div className='container-page'>
+        <>
             <div className='home-header-container'>
                 <div className='home-header-content'>
                     <div className='left-content'>
@@ -97,7 +96,7 @@ class HomeHeader extends Component {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
         );
     }
 

@@ -1,12 +1,14 @@
 @import "../../styles/common.scss";
 
 .container-page{
-    padding: 0 5%;
+    padding: 0 10%;
+
+    //Header menu
 
     .home-header-container{
         width: 100%;
         height: 60px;
-
+    
         .home-header-content{
             width: 100%;
             height: 100%;
@@ -16,14 +18,14 @@
                 width: 25%;
                 display: flex;
                 align-items: center;
-                padding: 0.5%;
+                padding: 0.5% 0.5% 0.5% 0;
                 i{
                     color: grey;
                     font-size: 25px;
                     cursor: pointer;
-                    margin-right: 5px;
+                    margin-right: 1%;
                 }
-              
+                
                 .header-logo{
                     background: url(../../assets/images/logoBooking.png);
                     height: 100%;
@@ -66,7 +68,7 @@
                     display: flex;
                     align-items: center;
                     cursor: pointer;
-
+    
                     i{
                         font-size: 15px;
                         color: $colormain;
@@ -92,7 +94,7 @@
                         cursor: pointer;
                     }
                 }
-
+    
                 .language-en{
                     margin-left: 2%;
                 }
@@ -101,6 +103,8 @@
     
     }
     
+    //Header banner
+
     .home-header-banner{
         background: url(../../assets/images/background6.jpeg) ;
         
@@ -140,7 +144,7 @@
                 width: 35%;
                 border: none;
                 border-radius: 25px;
-                background-color: rgb(245, 217, 92);
+                background-color: $background-yellow;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -173,14 +177,14 @@
             align-items: start;
             gap: 1%;
             padding-top: 3%;
-
+    
             .option-child{
                 width: 13%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-              
+                
                 .icon-child{
                     background: white;
                     width: 40px;
@@ -189,7 +193,7 @@
                     border-radius: 50%;
                     margin: 0 auto;
                     text-align: center;
-
+    
                     i{
                         color: $colormain;
                         font-size: 20px;
@@ -199,7 +203,7 @@
                         }                 
                     }
                 }
-
+    
                 .text-child{
                     color: $colormain;
                     font-size: 14px;
@@ -213,5 +217,133 @@
             }
         }         
     }
+    
+
+    //Sections
+
+    .home-sections{
+        //border: 1px solid red;
+        //height:310px;
+        &.section-specialty {
+            background: white;
+        }
+        &.section-medical-facility {
+            background: white;
+        }
+       
+       
+        .section-container{
+            //border: 1px solid blue;
+            margin-bottom: 5px;
+            display: flex;
+            flex-direction: column;
+
+            
+            .section-header{
+                //border: 1px solid rgb(255, 0, 157);
+                height: 50px;
+                margin-top: 30px;
+                margin-bottom: 10px;
+    
+                .section-title{
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+    
+                .section-btn{
+                    float: right;
+                    padding: 10px 13px;
+                    border: none;
+                    border-radius: 8px;
+                    outline: none;
+                    background-color: #daf3f6;
+                    color: $colormain;
+                    font-size: 14px;
+                    font-weight: 600;
+                    //text-transform: uppercase;
+                    cursor: pointer;
+    
+                    &:hover{
+                        background-color: $background-yellow;
+                    }
+                }
+            }
+    
+            .section-body{
+                //border: 1px solid black;
+                //padding: 0 15px;
+                margin-left: -32px;
+                margin-bottom: 5px;
+               
+                .section-item{ 
+                    //border: 1px solid black;
+                    .img-custom{
+                        border: 1px solid $border;
+                        border-radius: 20px;       
+                        margin-left: 30px;
+                        display: flex !important;
+                        flex-direction: column;
+                        align-items: center;
+                        margin-right: 2px;
+
+
+                        .item-img{
+                            img{
+                                width: 100%; 
+                                padding: 15px;
+                                border-radius: 25px;  
+                            }
+                        }
+                        
+                        .img-text{
+                            //border: 1px solid yellow;
+                            text-align: center;
+                            margin-bottom: 4%;
+                            font-size: 14px;
+                        }
+    
+                        &:hover{
+                            background: #f8f8f8;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                
+                //overide slick-carousel css
+                .slick-prev, .slick-next {
+                    border: 1px solid $border !important;
+                    border-radius: 8px;
+                    z-index: 10 !important;
+                    width: 30px !important;
+                    height: 30px !important;
+                }
+                .slick-next{
+                    right: -13px !important;
+                }
+                .slick-prev{
+                    left: 15px !important;
+                }
+    
+                .slick-prev:before, .slick-next:before {
+                    font-family: "Font Awesome 5 Free" !important;
+                    color: $border !important;
+                    font-weight: 550 !important;
+                    font-size: 20px !important;
+                    &:hover {
+                        color: #757575;
+                    }
+                }
+    
+                .slick-prev:before{
+                    content: "\f053" !important; //f060 //f177
+                }
+                .slick-next:before{
+                    content: "\f054" !important;
+                }
+            
+            }        
+        } 
+    }
+
 }
 
