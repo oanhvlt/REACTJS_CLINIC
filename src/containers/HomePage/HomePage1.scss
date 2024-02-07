@@ -144,7 +144,7 @@
                 width: 35%;
                 border: none;
                 border-radius: 25px;
-                background-color: $background-yellow;
+                background-color: $light-yellow;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -264,7 +264,7 @@
                     cursor: pointer;
     
                     &:hover{
-                        background-color: $background-yellow;
+                        background-color: $light-yellow;
                     }
                 }
             }
