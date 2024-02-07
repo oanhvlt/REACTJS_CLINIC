@@ -1,13 +1,17 @@
 @import "../../styles/common.scss";
 
 .container-page{
-    padding: 0 10%;
+    padding: 0 15%;
 
     //Header menu
 
     .home-header-container{
         width: 100%;
         height: 60px;
+        position: sticky;
+        top: 0;
+        background-color: white;
+        z-index: 1000;
     
         .home-header-content{
             width: 100%;
@@ -218,24 +222,13 @@
         }         
     }
     
-
     //Sections
-
+  
     .section-container{   
         display: flex;
         flex-direction: column;
 
-        &.section-specialty{
-            //background: #f5f5f5;
-        }
-
-        &.section-medical{
-            //background: #fdfbfb;
-        }
-
-        &.section-outstanding-doctor{
-            //background: #f5f5f5;
-        }
+        
         
         .section-header{
             //border: 1px solid green;
@@ -267,10 +260,6 @@
 
         .section-body{
             //border: 1px solid $light-gray;
-            // padding-right: 20px;
-            // padding-top: 2%;
-            // padding-right: 2%;
-            // margin-left: 20px;
             margin-left: -16px;
             margin-bottom: 20px;
             .section-item{ 
@@ -282,6 +271,10 @@
                     border: 1px solid $light-gray;
                     border-radius: 20px;
                     margin-left: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    
                     .item-img {
                         margin-top: 4%;
                         height: 150px;
@@ -289,18 +282,33 @@
                         background-size: contain;
                         background-position: center center;
                         background-repeat: no-repeat;
+                        
                         cursor: pointer;
 
                         &.item-img-specialty{
                             background-image: url(../../assets/images/chuyen-khoa/cham-cuu.png);   
+                            width: 90%;
+                            border-radius: 15px;
+                        }
+
+                        &.item-img-medical{
+                            background-image: url(../../assets/images/co-so-y-te/viet-duc.jpg);
+                            width: 90%;
                         }
 
                         &.item-img-outstanding-doctor{
                             background-image: url(../../assets/images/outstanding-doctors/anh-dai-dien-bs.jpg);
+                            width: 120px;
+                            height: 120px;
+                            border-radius: 50%;
+                            
                         }
 
-                        &.item-img-medical{
-                            background-image: url(../../assets/images/co-so-y-te/bvcr.jpg);
+                        &.item-img-handbook{
+                            background-image: url(../../assets/images/handbook/nang-co-hifu.png);
+                            border: 1px solid $light-gray;
+                            width: 80%;
+                        
                         }
 
                     }
@@ -310,7 +318,11 @@
                         align-items: center;
                         justify-content: center; 
                         height: 50px;
-                        text-align: center;
+                        text-align: center;       
+                    }
+
+                    .position{
+                        margin-top: 10px;
                     }
                 } 
             }
@@ -333,7 +345,7 @@
 
             .slick-prev:before, .slick-next:before {
                 font-family: "Font Awesome 5 Free" !important;
-                color: $border !important;
+                color: #cfcece !important;
                 font-weight: 550 !important;
                 font-size: 20px !important;
                
@@ -350,5 +362,74 @@
              
     } 
 
+    .section-outstanding-doctor{
+        .item-custom{
+            background: $light-blue;
+        }
+    }
+
+    .section-handbook{
+        margin-top: 20px;
+        border-top: 1px solid $light-gray;
+        .section-body{
+            .section-item{
+                .item-custom{
+                    border: none !important;
+                    .item-text{
+                        font-size: 13px !important;       
+                    }
+                }
+            }   
+            .slick-prev, .slick-next {
+                border: none !important;
+                z-index: 100 !important;
+            }
+            .slick-prev:before{
+                content: "\f060" !important; //f060 //f177
+            }
+            .slick-next:before{
+                content: "\f061" !important;
+            }
+        }
+       
+    }
+
+    .section-about {
+        //border: 1px solid red;
+        margin-top: 20px;
+        height: 500px !important;
+        border-top: 1px solid $light-gray;
+
+        .section-about-header{
+            padding: 20px 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .section-about-content{
+            display: flex;
+            gap: 15px;
+            width: 100%;
+
+            .content-left{
+                width: 60%;
+            }
+            .content-right{
+                width: 40%;
+
+                p{
+                    text-align: justify;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+
+    .home-footer{
+        text-align: center;
+
+        a{
+            text-decoration: unset;
+        }
+    }
 }
 

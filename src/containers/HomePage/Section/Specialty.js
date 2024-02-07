@@ -13,7 +13,7 @@ class Specialty extends Component {
         let settings = this.props.settings;
 
         return (
-        <div className='section-container'>
+        <div className='section-container section-specialty'>
             <div className='section-header'>
                 <span className='section-title'>Chuyên khoa phổ biến</span>
                 <button className='section-btn'>Xem thêm</button>
