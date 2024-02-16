@@ -21,9 +21,8 @@ class About extends Component {
                 <div className='content-left'>
                     <iframe width="100%" height="400px" 
                         src="https://www.youtube.com/embed/wxDM81OyDms?si=uvEIwc5GQF4tuDuK" 
-                        title="YouTube video player" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
                     </iframe>
                 </div>
                 <div className='content-right'>
