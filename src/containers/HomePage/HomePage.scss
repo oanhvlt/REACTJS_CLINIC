@@ -357,6 +357,10 @@
             .slick-next:before{
                 content: "\f054" !important;
             }
+
+            .slick-disabled {
+                display: none !important;
+            }
         
         } 
              

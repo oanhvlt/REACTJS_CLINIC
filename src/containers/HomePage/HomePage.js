@@ -18,7 +18,7 @@ class HomePage extends Component {
     render() {
         let home_settings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 4, //số item show trên 1 frame
             slidesToScroll: 1, // số item lướt qua khi next/prev
