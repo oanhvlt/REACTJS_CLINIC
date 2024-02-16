@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './UserManage.scss';
 import {getAllUsers, createNewUserService, 
-    deleteUserService, editUserService} from '../../services/userService';
+    deleteUserService, editSummaryUserService} from '../../services/userService';
 import ModalUser from './ModalUser';
 import ModalEditUser from './ModalEditUser';
 import {emitter} from '../../utils/emitter';
@@ -106,7 +106,7 @@ class UserManage extends Component {
     editUser = async(data) => {
         //console.log('data', data);
         try {
-            let response = await editUserService(data);
+            let response = await editSummaryUserService(data);
             if(response && response.errCode !== 0){
                 alert(response.message);
             }else {

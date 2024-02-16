@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Slider from "react-slick";
-import { MEDICAL_FACILITY_IMG } from '../../../utils';
 
 class HandBook extends Component {
 
     render() {
-        let settings = {
-            dots: false,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 4, //số item show trên 1 frame
-            slidesToScroll: 1, // số item lướt qua khi next/prev
-        };
+        // let settings = {
+        //     dots: false,
+        //     infinite: true,
+        //     speed: 500,
+        //     slidesToShow: 4, //số item show trên 1 frame
+        //     slidesToScroll: 1, // số item lướt qua khi next/prev
+        // };
 
         return (
             <div className='section-container section-handbook'>

@@ -45,7 +45,7 @@ class Login extends Component {
                 this.props.userLoginSuccess(data.user);
                 console.log('Login success!');
             }
-            
+            //log data response from api /api/login from server
             console.log('hdit:', data);
 
         } catch (e) {

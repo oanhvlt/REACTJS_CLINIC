@@ -178,7 +178,7 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: start;
+            align-items: flex-start;
             gap: 1%;
             padding-top: 3%;
     
@@ -297,7 +297,7 @@
                         }
 
                         &.item-img-outstanding-doctor{
-                            background-image: url(../../assets/images/outstanding-doctors/anh-dai-dien-bs.jpg);
+                            //background-image: url(../../assets/images/outstanding-doctors/anh-dai-dien-bs.jpg);
                             width: 120px;
                             height: 120px;
                             border-radius: 50%;

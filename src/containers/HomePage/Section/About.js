@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-// Import css files carousel
-import Slider from "react-slick";
-
+//import { FormattedMessage } from 'react-intl';
 //import image form utils//ImageStore.js
 //import { About_IMG } from '../../../utils';
 
 class About extends Component {
 
     render() {     
-        let settings = this.props.settings;
 
         return (
         <div className='section-container section-about'>
@@ -19,11 +15,13 @@ class About extends Component {
             </div>  
             <div className='section-about-content'>
                 <div className='content-left'>
+            
                     <iframe width="100%" height="400px" 
                         src="https://www.youtube.com/embed/wxDM81OyDms?si=uvEIwc5GQF4tuDuK" 
                         title="YouTube video player" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
-                    </iframe>
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    />
+
                 </div>
                 <div className='content-right'>
                     <p>A Silent Threat: 8 Signs That Could Indicate Fatty Liver Disease | Healthy Care

@@ -12,10 +12,12 @@ export const LANGUAGES = {
     EN: 'en'
 };
  
-export const manageActions = {
-    ADD: "ADD",
+//use this const in "UserRedux.js"
+export const CRUD_ACTIONS = {
+    CREATE: "CREATE",
     EDIT: "EDIT",
-    DELETE: "DELETE"
+    DELETE: "DELETE",
+    READ: "READ"
 };
 
 export const dateFormat = {

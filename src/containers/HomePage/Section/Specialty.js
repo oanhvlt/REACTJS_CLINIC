@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 // Import css files carousel
 import Slider from "react-slick";
-
-//import image form utils//ImageStore.js
-import { SPECIALTY_IMG } from '../../../utils';
 
 class Specialty extends Component {
 
     render() {     
-        let settings = this.props.settings;
 
         return (
         <div className='section-container section-specialty'>

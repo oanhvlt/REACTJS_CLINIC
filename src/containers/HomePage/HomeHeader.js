@@ -12,6 +12,7 @@ class HomeHeader extends Component {
     }
 
     render() {
+        
         //call language đã map từ redux store (thông qua props):
         let language = this.props.language;
 
@@ -83,11 +84,11 @@ class HomeHeader extends Component {
                         <div className='text-child'><FormattedMessage id="home_banner.general_examination"/></div>
                     </div>
                     <div className='option-child'>
-                        <div className='icon-child'><i class="fas fa-flask"></i></div>
+                        <div className='icon-child'><i className="fas fa-flask"></i></div>
                         <div className='text-child'><FormattedMessage id="home_banner.medical_tests"/></div>
                     </div>
                     <div className='option-child'>
-                        <div className='icon-child'><i class="fas fa-user-md"></i></div>
+                        <div className='icon-child'><i className="fas fa-user-md"></i></div>
                         <div className='text-child'><FormattedMessage id="home_banner.mental_health"/></div>
                     </div>
                     <div className='option-child'>
@@ -112,7 +113,7 @@ const mapStateToProps = state => {
      return {
         isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
-
+        userInfo: state.user.userInfo
     };
 };
 

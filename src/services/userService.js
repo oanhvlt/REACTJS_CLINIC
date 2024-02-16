@@ -18,7 +18,6 @@ const createNewUserService = (data) => {
     return axios.post(`/api/create-new-user`, data);
 }
 
-
 const deleteUserService = (userId) => {
     return axios.delete(`/api/delete-user`, {
         data: {
@@ -26,6 +25,11 @@ const deleteUserService = (userId) => {
         }
     });
 }
+
+const editSummaryUserService = (inputData) => {
+    return axios.put(`/api/edit-summary-user`, inputData);
+}
+
 
 const editUserService = (inputData) => {
     return axios.put(`/api/edit-user`, inputData);
@@ -36,6 +40,13 @@ const editUserService = (inputData) => {
 //     return axios.delete(`/api/delete-user?id=${userId}`);
 // }
 
+const getAllCodeService = (inputType) => {
+    return axios.get(`/api/allcode?type=${inputType}`);
+}
+
+const getTopDoctorsHomeService = (limit) =>{
+    return axios.get(`/api/top-doctors-home?limit=${limit}`);
+}
 
 export {
     handleLoginApi,
@@ -43,6 +54,9 @@ export {
     //getUsers,
     createNewUserService,
     deleteUserService,
-    editUserService
+    editSummaryUserService,
+    editUserService,
+    getAllCodeService,
+    getTopDoctorsHomeService
 }
 

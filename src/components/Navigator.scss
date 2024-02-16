@@ -35,6 +35,15 @@
                 height: 35px;
                 line-height: 35px;
                 text-transform: none;
+
+                &.active {
+                    background: darken($bg-menu-color, 3);
+                    a{
+                        color: $colormain;
+                        font-weight: 600;
+                    }
+                   
+                }
                 .menu-link {
                     text-decoration: none;
                     color: $text-in-light;

@@ -1,4 +1,4 @@
-import { truncate } from 'lodash';
+// import { truncate } from 'lodash';
 import React, { Component } from 'react';
 // import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';

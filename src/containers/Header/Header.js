@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import Navigator from '../../components/Navigator';
 import { adminMenu } from './menuApp';
 import './Header.scss';
+import { FormattedMessage } from 'react-intl';
 import {LANGUAGES} from '../../utils';
 //import all actions in redux store
 import * as actions from "../../store/actions";
+
+
 
 class Header extends Component {
 
@@ -15,7 +18,9 @@ class Header extends Component {
     }
 
     render() {
-        const { processLogout, language } = this.props;
+        const { processLogout, language, userInfo } = this.props;
+
+        //console.log('user info: ', userInfo);
 
         return (
             <div className="header-container">
@@ -25,6 +30,9 @@ class Header extends Component {
                 </div>
 
                 <div className='language'>
+                    <span className="welcome">
+                        <FormattedMessage id="system_header.welcome"/>, {userInfo && userInfo.firstName ? userInfo.firstName : ''}
+                    </span>
                     <span className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}
                         onClick={ () => this.handleChangeLanguage(LANGUAGES.VI) }>VN
                     </span>
@@ -44,10 +52,12 @@ class Header extends Component {
 
 }
 
+//isLoggedIn,userInfo: initial from 'userReducer.js'
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        language: state.app.language
+        language: state.app.language,
+        userInfo: state.user.userInfo
     };
 };
 
