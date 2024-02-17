@@ -56,6 +56,9 @@ const createInfoDoctorService = (data) =>{
     return axios.post(`/api/create-doctor-details`, data);
 }
 
+const getDoctorDetailsService = (id) =>{
+    return axios.get(`/api/get-doctor-details-by-id?id=${id}`);
+}
 
 export {
     handleLoginApi,
@@ -68,6 +71,7 @@ export {
     getAllCodeService,
     getTopDoctorsHomeService,
     getAllDoctorsService,
-    createInfoDoctorService
+    createInfoDoctorService,
+    getDoctorDetailsService,
 }
 

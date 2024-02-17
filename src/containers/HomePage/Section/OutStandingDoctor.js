@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import Slider from "react-slick";
 import * as actions from '../../../store/actions';
 import { LANGUAGES } from '../../../utils';
+import { withRouter } from 'react-router';
 
 class OutStandingDoctor extends Component {
-
+ 
     constructor(props){
         super(props);
         this.state = {
@@ -23,6 +24,10 @@ class OutStandingDoctor extends Component {
                 arrDoctors: this.props.topDoctorsRedux,
             })
         }
+    }
+
+    handleViewDoctorDetails = (doctor) => {
+        this.props.history.push(`doctor-detals/${doctor.id}`);
     }
 
     render() {
@@ -47,7 +52,7 @@ class OutStandingDoctor extends Component {
                                 let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`;
                                 let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
                                 return (
-                                    <div className='section-item' key={index}>
+                                    <div className='section-item' key={index} onClick={() => this.handleViewDoctorDetails(item)}>
                                         <div className='item-custom'>
                                             <div className='item-img item-img-outstanding-doctor'
                                                 style={{backgroundImage: `url(${imageBase64})`}} 
@@ -85,4 +90,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor));

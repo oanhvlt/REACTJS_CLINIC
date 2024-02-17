@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HomeHeader from './HomeHeader';
+//import HomeHeader from './HomeHeader/HomeHeader_banner';
+//import HomeHeader from './HomeHeader/HomeHeader';
 import Specialty from './Section/Specialty';
 import MedicalFacility from './Section/MedicalFacility';
 import OutStandingDoctor from './Section/OutStandingDoctor';
 import HandBook from './Section/HandBook';
 import About from './Section/About';
 import HomeFooter from './HomeFooter';
+import HomeMenu from './HomeHeader/HomeMenu';
+import HomeBanner from './HomeHeader/HomeBanner';
 
 // Import css files carousel
 import "slick-carousel/slick/slick.css";
@@ -25,8 +28,11 @@ class HomePage extends Component {
         };
 
         return (
+        <>
+            
             <div className='container-page'>
-                <HomeHeader />
+                <HomeMenu/>
+                <HomeBanner/>
                 <Specialty settings = {home_settings}/>
                 <MedicalFacility settings = {home_settings}/>
                 <OutStandingDoctor settings = {home_settings}/>
@@ -34,6 +40,8 @@ class HomePage extends Component {
                 <About/>
                 <HomeFooter/>
             </div>
+        </>
+           
         );
     }
 
