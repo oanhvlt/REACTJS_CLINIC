@@ -21,7 +21,7 @@ export const adminMenu = [
             },
             {
                 name: 'menu_cms.admin.manage-doctor',
-                link: '/system/user-doctor'
+                link: '/system/manage-doctor'
             },
             {
                 name: 'menu_cms.admin.manage-admin',
