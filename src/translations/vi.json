@@ -52,6 +52,9 @@
             "manage-specialty": "Quản lý chuyên khoa",
             "handbook": "Cẩm nang",
             "manage-handbook": "Quản lý cẩm nang"
+        },
+        "doctor": {
+            "manage-schedule": "Quản lý kế hoạch khám bệnh"
         }
        
     },
@@ -74,6 +77,10 @@
         "edit": "Câp nhật thông tin",
         "cancel": "Huỷ bỏ",
         "reset": "Làm mới"
+    },
+
+    "manage-schedule": {
+        "title": "Quản lý kế hoạch khám bệnh bác sĩ"
     }
 
 

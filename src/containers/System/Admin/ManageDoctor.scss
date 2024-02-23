@@ -17,8 +17,23 @@
     border-radius: 3px;
     outline: none;
     border: none;
-    padding: 5px;
-    background: orange;
+    padding: 5px 8px;
+    background: $light-yellow;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+
+  .create-content-doctor{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    padding: 5px 8px;
+    background: $colormain;
+    color: white;
     cursor: pointer;
     &:hover{
       opacity: 0.8;

@@ -1,32 +1,56 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Navigator from '../../components/Navigator';
-import { adminMenu } from './menuApp';
+import { adminMenu, doctorMenu } from './menuApp';
 import './Header.scss';
 import { FormattedMessage } from 'react-intl';
-import {LANGUAGES} from '../../utils';
+import {LANGUAGES, USER_ROLE} from '../../utils';
+import _ from 'lodash';
 //import all actions in redux store
 import * as actions from "../../store/actions";
 
-
-
 class Header extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            menuApp: []
+        }
+    }
 
     handleChangeLanguage(language){
          //call event đã map từ redux (from  function: mapDispatchToProps)
          this.props.changeLanguageAppRedux(language);   
     }
 
-    render() {
-        const { processLogout, language, userInfo } = this.props;
+    componentDidMount(){
+        //check quyền user
+        
+        let {userInfo} = this.props;
+        let menu = [];
+        if(userInfo && !_.isEmpty(userInfo)){
+            let role = userInfo.roleId;
+            if(role === USER_ROLE.ADMIN){
+                menu = adminMenu;
+            }
+            else if(role === USER_ROLE.DOCTOR){
+                menu = doctorMenu;
+            }
 
-        //console.log('user info: ', userInfo);
+            this.setState({
+                menuApp: menu
+            })
+        }
+    }
+    render() {
+         //console.log('user info: ',  this.props.userInfo);
+        const { processLogout, language, userInfo } = this.props;
 
         return (
             <div className="header-container">
                 {/* thanh navigator */}
                 <div className="header-tabs-container">
-                    <Navigator menus={adminMenu} />
+                    <Navigator menus={this.state.menuApp} />
                 </div>
 
                 <div className='language'>

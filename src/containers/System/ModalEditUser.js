@@ -111,7 +111,7 @@ class ModalEditUser extends Component {
                     </div> 
                 </ModalBody>
                 <ModalFooter>
-                <Button className='background-platform px-3' 
+                <Button className='bg-platform px-3' 
                     onClick={ ()=>{this.handleEditUser()} }>
                     Save
                 </Button>{' '}

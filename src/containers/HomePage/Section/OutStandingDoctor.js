@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Slider from "react-slick";
 import * as actions from '../../../store/actions';
 import { LANGUAGES } from '../../../utils';
+//use history.push: directly to a router
 import { withRouter } from 'react-router';
 
 class OutStandingDoctor extends Component {
@@ -27,7 +28,11 @@ class OutStandingDoctor extends Component {
     }
 
     handleViewDoctorDetails = (doctor) => {
-        this.props.history.push(`doctor-detals/${doctor.id}`);
+        //use property 'history.push' to get details page
+        if(this.props.history){
+            this.props.history.push(`doctor-detals/${doctor.id}`);
+        }
+       
     }
 
     render() {

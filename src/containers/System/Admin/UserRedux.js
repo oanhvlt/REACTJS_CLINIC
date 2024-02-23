@@ -346,11 +346,11 @@ class UserRedux extends Component {
                     </div>
                     <div className='row mt-3'>
                         <div className='col-12 mt-3'>
-                            <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn background-platform'} 
+                            <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn bg-platform'} 
                             onClick={() => this.handleSaveUser()}>
                                 {this.state.action === CRUD_ACTIONS.EDIT ? <FormattedMessage id='manage-user.edit'/> : <FormattedMessage id='manage-user.save'/>}
                             </button>
-                            <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn background-platform'} 
+                            <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn bg-platform'} 
                             onClick={() => this.reset()}>
                                 {this.state.action === CRUD_ACTIONS.EDIT ? <FormattedMessage id='manage-user.cancel'/> : <FormattedMessage id='manage-user.reset'/>}
                             </button>

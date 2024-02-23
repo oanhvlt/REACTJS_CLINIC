@@ -20,11 +20,17 @@ export const CRUD_ACTIONS = {
     READ: "READ"
 };
 
-export const dateFormat = {
+export const DATE_FORMAT = {
     SEND_TO_SERVER: 'DD/MM/YYYY'
 };
 
 export const YesNoObj = {
     YES: 'Y',
     NO: 'N'
+}
+
+export const USER_ROLE = {
+    ADMIN: 'R1',
+    DOCTOR: 'R2',
+    PATIENT: 'R3',
 }

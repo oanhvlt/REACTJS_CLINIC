@@ -144,7 +144,7 @@ class UserManage extends Component {
                
                 <div className='title text-center'>Manage users</div>
                 <div className='mx-1'> 
-                    <button className='btn background-platform px-3' 
+                    <button className='btn bg-platform px-3' 
                     onClick={ ()=>this.handleAddNewUser() }>
                         <i className="fas fa-plus-circle"></i> Add new
                     </button>

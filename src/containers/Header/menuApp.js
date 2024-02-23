@@ -1,3 +1,6 @@
+/**
+ * css file: Navigator.scss
+ */
 export const adminMenu = [
     { //Quản lý người dùng
         name: 'menu_cms.admin.user', 
@@ -23,12 +26,15 @@ export const adminMenu = [
                 name: 'menu_cms.admin.manage-doctor',
                 link: '/system/manage-doctor'
             },
-            {
-                name: 'menu_cms.admin.manage-admin',
-                link: '/system/user-admin'
+            // {
+            //     name: 'menu_cms.admin.manage-admin',
+            //     link: '/system/user-admin'
+            // },
+           
+            { //Quản lý schedule
+                name: 'menu_cms.doctor.manage-schedule', 
+                link: '/doctor/manage-schedule'
             },
-           
-           
         ]
     },
 
@@ -59,4 +65,21 @@ export const adminMenu = [
             },   
         ]
     },
+   
 ];
+
+
+
+export const doctorMenu = [
+    { //Quản lý người dùng
+        name: 'menu_cms.admin.user', 
+        menus: [
+            { //Quản lý schedule
+                name: 'menu_cms.doctor.manage-schedule', 
+                link: '/doctor/manage-schedule'
+            },
+        ]
+    },
+
+];
+

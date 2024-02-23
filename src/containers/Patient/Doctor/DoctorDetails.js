@@ -79,6 +79,7 @@ class DoctorDetails extends Component {
                     <div className='schedule'>
 
                     </div>
+                  
                     <div className='info-detail'>
                         {doctorDetails && doctorDetails.Markdown && doctorDetails.Markdown.contentHTML
                             && 
