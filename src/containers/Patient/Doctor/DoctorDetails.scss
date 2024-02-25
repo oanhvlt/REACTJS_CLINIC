@@ -35,10 +35,16 @@
     .schedule{
         margin: 15px 0px;
         display: flex;
-        height: 200px;
+        min-height: 200px;
+        align-items: center;
 
         .content-left{
             width: 50%;
+        }
+
+        .vl{
+            border-left: 1px solid $light-gray;
+            height: 100px;
         }
 
         .content-right{

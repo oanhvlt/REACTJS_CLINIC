@@ -13,7 +13,8 @@ class DoctorDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            doctorDetails: {}
+            doctorDetails: {},
+            currentDoctorId: -1,
         }
     }
 
@@ -23,11 +24,14 @@ class DoctorDetails extends Component {
     async componentDidMount() {
         if(this.props.match && this.props.match.params && this.props.match.params.id){
             let id = this.props.match.params.id;
+            this.setState({
+                currentDoctorId: id
+            })
             let res = await getDoctorDetailsService(id);
            
             if(res && res.errCode === 0){
                 this.setState({
-                    doctorDetails: res.data
+                    doctorDetails: res.data,
                 })
             }
         }
@@ -44,7 +48,7 @@ class DoctorDetails extends Component {
     render() {
         //console.log('check state: ', this.state)
 
-        let {doctorDetails} = this.state;
+        let {doctorDetails, currentDoctorId} = this.state;
         let {language} = this.props;
         let nameVi = '', nameEn = '';
 
@@ -79,11 +83,10 @@ class DoctorDetails extends Component {
                     <div className='schedule'>
                         <div className='content-left'>
                             <DoctorSchedule 
-                                doctorIdFromParent= {
-                                    doctorDetails && doctorDetails.id ? doctorDetails.id : -1
-                                }
+                                doctorIdFromParent= {currentDoctorId}
                             />
                         </div>
+                        <div class="vl"></div>
                         <div className='content-right'></div>
                     </div>
                   

@@ -82,7 +82,18 @@
     },
     "manage-schedule": {
         "title": "Manage Doctor's plan"
+    },
+
+    "patient": {
+        "doctor-details": {
+            "schedule": "Schedule"
+        }
+    },
+
+    "admin": {
+        "manage-doctor":{
+            "title":"Create Doctor's infomation"
+        }
     }
-    
 
 }

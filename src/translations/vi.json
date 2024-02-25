@@ -81,7 +81,18 @@
 
     "manage-schedule": {
         "title": "Quản lý kế hoạch khám bệnh bác sĩ"
-    }
+    },
 
+    "patient": {
+        "doctor-details": {
+            "schedule": "Lịch khám"
+        }
+    },
+
+    "admin": {
+        "manage-doctor":{
+            "title":"Tạo thêm thông tin bác sĩ"
+        }
+    }
 
 }

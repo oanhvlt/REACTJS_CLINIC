@@ -8,7 +8,8 @@ const initialState = {
     users: [],
     allDoctors:[],
     topDoctors: [],
-    allScheduleTime: []
+    allScheduleTime: [],
+    allRequiredDoctorInfo: [],
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -112,7 +113,17 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state,
             }
-
+        //doctor_info   
+        case actionTypes.FETCH_REQUIRED_DOCTOR_INFO_SUCCESS:    
+            state.allRequiredDoctorInfo = action.data;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_REQUIRED_DOCTOR_INFO_FAILED: 
+            state.allRequiredDoctorInfo = [];
+            return {
+                ...state,
+            }
 
         default:
             return state;

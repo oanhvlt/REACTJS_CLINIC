@@ -8,7 +8,7 @@ import Select from 'react-select';
 //import custom component DatePicker
 import DatePicker from '../../../components/Input/DatePicker';
 //format date
-import moment from 'moment';
+//import moment from 'moment';
 import { toast } from "react-toastify";
 //thao tác với array
 import _ from 'lodash';
@@ -145,7 +145,13 @@ class ManageSchedule extends Component {
         }
         //call api create schedule
         let res = await saveBulkScheduleService(sendData);
-        console.log ('check res: ', res)
+        
+        if(res && res.errCode === 0){
+            toast.success('Save info succeed!');
+        }else{
+            toast.error('Error save Schedule doctor!');
+            console.log ('check error Schedule doctor: ', res);
+        }
     }
 
     render() {
@@ -153,7 +159,8 @@ class ManageSchedule extends Component {
         let {rangeTime} = this.state;
         let language = this.props.languageRedux;
         //set mindate selected từ current date
-        let currDate = moment(new Date()).subtract(1, 'days').valueOf();
+        let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
+        //let yesterday = moment(new Date()).subtract(1, 'days').valueOf();
     
         return (
             <div className='manage-schedule-container'>
@@ -175,7 +182,7 @@ class ManageSchedule extends Component {
                             <DatePicker className='form-control'
                                 onChange = {this.handleOnchangeDatePicker}
                                 value={this.state.currentDate}
-                                minDate = {currDate}
+                                minDate = {yesterday}
                             />
                         </div>
                         <div className='col-12 pick-hour-container'>

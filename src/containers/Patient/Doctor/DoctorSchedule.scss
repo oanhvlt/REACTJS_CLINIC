@@ -2,7 +2,6 @@
 
 .doctor-schedule-container{
     height: 100%;
-    border-right: 1px solid green;
     
     .all-schedule{
         select{
@@ -33,22 +32,41 @@
         }
 
         .time-content{
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap; //tự động xuống dòng nếu thiếu không gian
-           
-            button{
-                font-weight: 600;
-                color: #333;
-                padding: 5px 10px;
-                border: none;
-                outline: none;
-                background-color: $light-gray;
-                min-width: 150px;
-                border-radius: 3px;
-                &:hover{
-                    border: 2px solid $colormain;
+
+            .time-content-btn{
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap; //tự động xuống dòng nếu thiếu không gian
+
+                button{
+                    font-weight: 600;
+                    color: #333;
+                    font-size: 13px;
+                    padding: 5px 10px;
+                    border: none;
+                    outline: none;
+                    background-color: $light-gray;
+    
+                    border-radius: 3px;
+                    &:hover{
+                        border: 2px solid $colormain;
+                    }
                 }
+    
+                .btn-vi{
+                    min-width: 120px;
+                }
+    
+                .btn-en{
+                    min-width: 150px;
+                }
+    
+            }
+           
+            .book-free {
+                margin-top: 15px;
+                color: gray;
+                font-size: 13px;
             }
            
         }
