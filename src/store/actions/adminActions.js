@@ -6,7 +6,7 @@ import {getAllCodeService,
     editUserService,
     getTopDoctorsHomeService,
     getAllDoctorsService,
-    createInfoDoctorService} from '../../services/userService';
+    saveInfoDoctorService} from '../../services/userService';
 import { toast } from "react-toastify";
 
 //gender
@@ -260,10 +260,10 @@ export const fetchAllDoctorsFailed = () => ({
     type: actionTypes.FETCH_ALL_DOCTORS_FAILED
 })
 
-export const createInfoDoctor = (data) => {
+export const saveInfoDoctor = (data) => {
     return async(dispatch, getState) => {
         try {
-            let res = await createInfoDoctorService(data);
+            let res = await saveInfoDoctorService(data);
             if(res && res.errCode === 0){
                 toast.success("Create doctor's info succeed!");
             }else{
@@ -271,7 +271,7 @@ export const createInfoDoctor = (data) => {
             }
         } catch (e) {
             toast.error("Create doctor's info failed!");
-            console.log('createInfoDoctorFailed error: ', e)
+            console.log('saveInfoDoctorFailed error: ', e)
         }
        
     }

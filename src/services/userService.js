@@ -52,8 +52,8 @@ const getAllDoctorsService = () =>{
     return axios.get(`/api/get-all-doctors`);
 }
 
-const createInfoDoctorService = (data) =>{
-    return axios.post(`/api/create-doctor-details`, data);
+const saveInfoDoctorService = (data) =>{
+    return axios.post(`/api/save-doctor-details`, data);
 }
 
 const getDoctorDetailsService = (id) =>{
@@ -79,7 +79,7 @@ export {
     getAllCodeService,
     getTopDoctorsHomeService,
     getAllDoctorsService,
-    createInfoDoctorService,
+    saveInfoDoctorService,
     getDoctorDetailsService,
     saveBulkScheduleService,
     getScheduleByDateService

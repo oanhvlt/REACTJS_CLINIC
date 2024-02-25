@@ -50,15 +50,41 @@ class ManageDoctor extends Component {
     buildDataInputSelect = (inputData, type) => {
         let result = [];
         if(inputData && inputData.length > 0){
-            inputData.map((item, index) => {
-                let obj = {};
-                let lableVi = type === 'USERS' ? `${item.lastName} ${item.firstName}` : item.valueVi;
-                let lableEn = type === 'USERS' ? `${item.firstName} ${item.lastName}` : item.valueEn;
-                obj.label = this.props.languageRedux === LANGUAGES.VI ? lableVi: lableEn;
-                obj.value = item.id;
-                result.push(obj);
-                return item;
-            })   
+            if(type === 'USERS'){
+                inputData.map((item, index) => {
+                    let obj = {};
+                    let lableVi = `${item.lastName} ${item.firstName}`;
+                    let lableEn = `${item.firstName} ${item.lastName}`;
+                    obj.label = this.props.languageRedux === LANGUAGES.VI ? lableVi: lableEn;
+                    obj.value = item.id;
+                    result.push(obj);
+                    return item;
+                })   
+            }
+            if(type === 'PRICE'){
+                inputData.map((item, index) => {
+                    let obj = {};
+                    let lableVi = `${item.valueVi} VNĐ`;
+                    let lableEn = `${item.valueEn} USD`;
+                    obj.label = this.props.languageRedux === LANGUAGES.VI ? lableVi: lableEn;
+                    obj.value = item.keyMap;
+                    result.push(obj);
+                    return item;
+                })   
+            }
+            if(type === 'PAYMENT' || type === 'PROVINCE'){
+                inputData.map((item, index) => {
+                    let obj = {};
+                    let lableVi = item.valueVi;
+                    let lableEn = item.valueEn;
+                    obj.label = this.props.languageRedux === LANGUAGES.VI ? lableVi: lableEn;
+                    obj.value = item.keyMap;
+                    result.push(obj);
+                    return item;
+                })   
+            }
+            
+            
         }
         return result;
     }
@@ -70,20 +96,29 @@ class ManageDoctor extends Component {
                 doctors: dataSelect
             })
         }
-        if(prevProps.languageRedux !== this.props.languageRedux){
-            let dataList = this.buildDataInputSelect(this.props.doctorsRedux);
-            this.setState({
-                doctors: dataList,  
-            })
-        }
+     
         if(prevProps.allRequiredDoctorInfo !== this.props.allRequiredDoctorInfo){
             let {resPrice, resPayment, resProvince} = this.props.allRequiredDoctorInfo;
         
-            let dataSelectPrice = this.buildDataInputSelect(resPrice);
-            let dataSelectPayment = this.buildDataInputSelect(resPayment);
-            let dataSelectProvince = this.buildDataInputSelect(resProvince);
+            let dataSelectPrice = this.buildDataInputSelect(resPrice, 'PRICE');
+            let dataSelectPayment = this.buildDataInputSelect(resPayment, 'PAYMENT');
+            let dataSelectProvince = this.buildDataInputSelect(resProvince, 'PROVINCE');
          
             this.setState({
+                listPrice: dataSelectPrice,
+                listPayment: dataSelectPayment,
+                listProvince: dataSelectProvince,
+            })
+        }
+
+        if(prevProps.languageRedux !== this.props.languageRedux){
+            let dataList = this.buildDataInputSelect(this.props.doctorsRedux, 'USERS');
+            let {resPrice, resPayment, resProvince} = this.props.allRequiredDoctorInfo;
+            let dataSelectPrice = this.buildDataInputSelect(resPrice, 'PRICE');
+            let dataSelectPayment = this.buildDataInputSelect(resPayment, 'PAYMENT');
+            let dataSelectProvince = this.buildDataInputSelect(resProvince, 'PROVINCE');
+            this.setState({
+                doctors: dataList,  
                 listPrice: dataSelectPrice,
                 listPayment: dataSelectPayment,
                 listProvince: dataSelectProvince,
@@ -101,22 +136,32 @@ class ManageDoctor extends Component {
     handleSaveContentMarkdown = () => {
        // console.log('check state: ', this.state)
         let {hasOldData} = this.state;
-        this.props.createInfoDoctor({
+        this.props.saveInfoDoctor({
+            //save markdown table
             contentHTML: this.state.contentHTML,
             contentMarkdown: this.state.contentMarkdown,
             description: this.state.description,
             doctorId: this.state.selectedOption.value,
             //truyền thêm action create/edit cho Backend (doctorService > saveDoctorDetails)
             action: hasOldData === true ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.CREATE,
+        
+            //save doctor_info table
+            selectedPrice: this.state.selectedPrice.value,
+            selectedPayment: this.state.selectedPayment.value,
+            selectedProvince: this.state.selectedProvince.value,
+            nameClinic: this.state.nameClinic,
+            addressClinic: this.state.addressClinic,
+            note: this.state.note,
+        
         })
-        console.log('hasOldData: ', hasOldData);
+        //console.log('hasOldData: ', hasOldData);
     }
 
-    handleChangeSelect = async (option) => {
-        this.setState({ 
-                selectedOption: option
-            });
-        let res = await getDoctorDetailsService(option.value);
+    //onchange Doctor
+    handleChangeSelect = async (selectedOption) => {
+        this.setState({ selectedOption});
+        
+        let res = await getDoctorDetailsService(selectedOption.value);
         if(res && res.errCode === 0 && res.data.Markdown){
             let markdown = res.data.Markdown;
             this.setState({
@@ -136,18 +181,33 @@ class ManageDoctor extends Component {
         //console.log('getDoctorDetailsService: ', res)
     };
 
-    handleOnchangeDesc = (event) =>{
+    //onchange dropdown chon gia, chon phuong thuc thanh toan, chon tinh thanh
+    handleChangeSelectDoctorInfo = async(selectedOption, name) => {
+        let stateName = name.name;
+        let stateCopy = {...this.state};
+        stateCopy[stateName] = selectedOption;
         this.setState({
-            description: event.target.value,
+            ...stateCopy
+        })
+        console.log('selectedOption: ', selectedOption, 'name: ', name)
+    }
+
+    handleOnchangeText = (event, id) =>{
+        let stateCopy = {...this.state};
+        stateCopy[id] = event.target.value;
+        this.setState({
+            ...stateCopy
         })
     }
 
 
+
     render() {
         //console.log('check state: ', this.state)
-        let {hasOldData} = this.state;
-        let { listPrice, listPayment, listProvince} = this.state;
-
+        let {doctors, selectedOption, description, hasOldData} = this.state;
+        let { listPrice, listPayment, listProvince, 
+            nameClinic, addressClinic, note} = this.state;
+     
         return (
             <div className='manage-doctor-container'>
                 <div className='manage-doctor-title'>
@@ -157,58 +217,67 @@ class ManageDoctor extends Component {
                     <div className='content-left form-group'>
                         <label>Chọn bác sĩ:</label>
                         <Select 
-                            value={this.state.selectedOption}
+                            value={selectedOption}
                             onChange={this.handleChangeSelect}
-                            options={this.state.doctors}
+                            options={doctors}
                             placeholder={'Chọn bác sĩ ...'}
                         />
                     </div> 
                     <div className='content-right'>
                         <label>Thông tin giới thiệu:</label>
                         <textarea className='form-control' rows='5' 
-                        onChange={(event)=> this.handleOnchangeDesc(event)}
-                        value={this.state.description}/>
+                        onChange={(event)=> this.handleOnchangeText(event, 'description')}
+                        value={description}/>
                     </div>
                 </div>
                 <div className='more-info-extra row'>
                     <div className='col-4 form-group'>
-                        <label>Chọn giá</label>
+                        <label>Chọn giá khám</label>
                         <Select 
-                            //value={this.state.selectedOption}
-                            //onChange={this.handleChangeSelect}
+                            value={this.state.selectedPrice}
+                            onChange={this.handleChangeSelectDoctorInfo}
                             options={listPrice}
                             placeholder={'Chọn giá ...'}
+                            name='selectedPrice'
                         />
                     </div>
                     <div className='col-4 form-group'>
                         <label>Phương thức thanh toán</label>
                         <Select 
-                            //value={this.state.selectedOption}
-                            //onChange={this.handleChangeSelect}
+                            value={this.state.selectedPayment}
+                            onChange={this.handleChangeSelectDoctorInfo}
                             options={listPayment}
                             placeholder={'Chọn phương thức thanh toán ...'}
+                            name='selectedPayment'
                         />
                     </div>
                     <div className='col-4 form-group'>
                         <label>Tỉnh thành</label>
                         <Select 
-                            //value={this.state.selectedOption}
-                            //onChange={this.handleChangeSelect}
+                            value={this.state.selectedProvince}
+                            onChange={this.handleChangeSelectDoctorInfo}
                             options={listProvince}
                             placeholder={'Chọn tỉnh thành ...'}
+                            name='selectedProvince'
                         />
                     </div>
                     <div className='col-4 form-group'>
                         <label>Tên phòng khám</label>
-                        <input className='form-control'/>
+                        <input className='form-control'
+                        onChange={(event) => this.handleOnchangeText(event, 'nameClinic')}
+                        value={nameClinic}/>
                     </div>
                     <div className='col-4 form-group'>
                         <label>Địa chỉ phòng khám</label>
-                        <input className='form-control'/>
+                        <input className='form-control'
+                         onChange={(event) => this.handleOnchangeText(event, 'addressClinic')}
+                         value={addressClinic}/>
                     </div>
                     <div className='col-4 form-group'>
                         <label>Note</label>
-                        <input className='form-control'/>
+                        <input className='form-control'
+                         onChange={(event) => this.handleOnchangeText(event, 'note')}
+                         value={note}/>
                     </div>
                 </div>
                 <div className='manage-doctor-editor'>
@@ -240,7 +309,7 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchAllDoctors: () => dispatch(actions.fetchAllDoctors()),
         getAllRequiredDoctorInfo: () => dispatch(actions.getRequiredDoctorInfo()),
-        createInfoDoctor: (data) => dispatch(actions.createInfoDoctor(data)),
+        saveInfoDoctor: (data) => dispatch(actions.saveInfoDoctor(data)),
     };
 };
 
