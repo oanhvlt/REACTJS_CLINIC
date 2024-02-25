@@ -1,7 +1,7 @@
 @import "../../../styles/base.scss";
 
 .doctor-details-container{
-    margin-top: 20px;
+    margin: 20px 0;
 
     .intro{
         display: flex;
@@ -31,10 +31,26 @@
     hr{
         color: grey;
     }
+
+    .schedule{
+        margin: 15px 0px;
+        display: flex;
+        height: 200px;
+
+        .content-left{
+            width: 50%;
+        }
+
+        .content-right{
+            width: 50%;
+        }
+    }
+
     .info-detail{
         font-size: 14px;
         padding: 20px;
         background: $bg-gray;
         //font-family: Montserrat,sans-serif!important;
     }
+
 }

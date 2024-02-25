@@ -6,6 +6,7 @@ import './DoctorDetails.scss';
 import HomeMenu from '../../HomePage/HomeHeader/HomeMenu';
 import {getDoctorDetailsService} from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
+import DoctorSchedule from './DoctorSchedule';
 
 class DoctorDetails extends Component {
 
@@ -41,7 +42,7 @@ class DoctorDetails extends Component {
     }
    
     render() {
-        console.log('check state: ', this.state)
+        //console.log('check state: ', this.state)
 
         let {doctorDetails} = this.state;
         let {language} = this.props;
@@ -52,7 +53,6 @@ class DoctorDetails extends Component {
             nameEn = `${doctorDetails.positionData.valueEn}, ${doctorDetails.firstName} ${doctorDetails.lastName}`;
         }
        
-
         return (
         <> 
             <div className='container-page'>
@@ -77,7 +77,14 @@ class DoctorDetails extends Component {
                         </div>
                     </div>
                     <div className='schedule'>
-
+                        <div className='content-left'>
+                            <DoctorSchedule 
+                                doctorIdFromParent= {
+                                    doctorDetails && doctorDetails.id ? doctorDetails.id : -1
+                                }
+                            />
+                        </div>
+                        <div className='content-right'></div>
                     </div>
                   
                     <div className='info-detail'>

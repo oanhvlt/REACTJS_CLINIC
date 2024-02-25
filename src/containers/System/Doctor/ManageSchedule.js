@@ -29,6 +29,7 @@ class ManageSchedule extends Component {
     componentDidMount(){
         this.props.fetchAllDoctors();
         this.props.fetchAllCodeScheduleTime();
+       
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
@@ -151,7 +152,9 @@ class ManageSchedule extends Component {
         
         let {rangeTime} = this.state;
         let language = this.props.languageRedux;
-
+        //set mindate selected từ current date
+        let currDate = moment(new Date()).subtract(1, 'days').valueOf();
+    
         return (
             <div className='manage-schedule-container'>
                 <div className='ms-title'>
@@ -172,7 +175,7 @@ class ManageSchedule extends Component {
                             <DatePicker className='form-control'
                                 onChange = {this.handleOnchangeDatePicker}
                                 value={this.state.currentDate}
-                                minDate = {new Date()}
+                                minDate = {currDate}
                             />
                         </div>
                         <div className='col-12 pick-hour-container'>
