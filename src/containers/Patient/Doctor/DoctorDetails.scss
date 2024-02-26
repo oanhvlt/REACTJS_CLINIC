@@ -36,15 +36,15 @@
         margin: 15px 0px;
         display: flex;
         min-height: 200px;
-        align-items: center;
 
         .content-left{
             width: 50%;
         }
 
         .vl{
+            align-items: center;
             border-left: 1px solid $light-gray;
-            height: 100px;
+            //height: 100px;
         }
 
         .content-right{

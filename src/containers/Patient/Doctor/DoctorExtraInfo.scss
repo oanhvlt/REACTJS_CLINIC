@@ -6,24 +6,29 @@
     .content-up{
 
         .text-address{
+            font-weight: 600;
             text-transform: uppercase;
-            color: #333;
+            color: #505050;
         }
         .name-clinic{
             padding: 3px 0;
             font-weight: 600;
-            color: #333;
+            color: #505050;
         }
         .address-details{
             padding: 3px 0;
-            color: #333;
+            color: #505050;
         }
     }
 
     .content-down{
 
         .short-info{
-            span{
+            .currency{
+                margin: 0 5px;
+                color: #505050;
+            }
+            .details{
                 padding-left: 5px;
                 cursor: pointer;
                 color: $colormain;
