@@ -160,15 +160,45 @@ class ManageDoctor extends Component {
     //onchange Doctor
     handleChangeSelect = async (selectedOption) => {
         this.setState({ selectedOption});
+        let {listPrice, listPayment, listProvince} = this.state;
         
         let res = await getDoctorDetailsService(selectedOption.value);
         if(res && res.errCode === 0 && res.data.Markdown){
             let markdown = res.data.Markdown;
+            let priceId = '', paymentId = '', provinceId = '';
+            let addressClinic = '', nameClinic = '', note = '';
+            let selectedPrice = '', selectedPayment = '', selectedProvince = '';
+
+            if (res.data.Doctor_Info){
+                nameClinic = res.data.Doctor_Info.nameClinic;
+                addressClinic = res.data.Doctor_Info.addressClinic;
+                note = res.data.Doctor_Info.note;
+                priceId = res.data.Doctor_Info.priceId;
+                paymentId = res.data.Doctor_Info.paymentId;
+                provinceId = res.data.Doctor_Info.provinceId;
+
+                selectedPrice = listPrice.find(item => {
+                    return item && item.value === priceId;
+                })
+                selectedPayment = listPayment.find(item => {
+                    return item && item.value === paymentId;
+                })
+                selectedProvince = listProvince.find(item => {
+                    return item && item.value === provinceId;
+                })
+            }
+
             this.setState({
                 contentHTML: markdown.contentHTML,
                 contentMarkdown: markdown.contentMarkdown,
                 description: markdown.description,
                 hasOldData: true,
+                nameClinic: nameClinic,
+                addressClinic: addressClinic,
+                note: note,
+                selectedPrice: selectedPrice,
+                selectedPayment: selectedPayment,
+                selectedProvince: selectedProvince,
             });
         }else{
             this.setState({
@@ -176,6 +206,9 @@ class ManageDoctor extends Component {
                 contentMarkdown: '',
                 description: '',
                 hasOldData: false,
+                nameClinic: '',
+                addressClinic: '',
+                note: '',
             });
         }
         //console.log('getDoctorDetailsService: ', res)

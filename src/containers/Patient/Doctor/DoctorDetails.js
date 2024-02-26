@@ -7,6 +7,7 @@ import HomeMenu from '../../HomePage/HomeHeader/HomeMenu';
 import {getDoctorDetailsService} from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
+import DoctorExtraInfo from './DoctorExtraInfo';
 
 class DoctorDetails extends Component {
 
@@ -82,12 +83,12 @@ class DoctorDetails extends Component {
                     </div>
                     <div className='schedule'>
                         <div className='content-left'>
-                            <DoctorSchedule 
-                                doctorIdFromParent= {currentDoctorId}
-                            />
+                            <DoctorSchedule doctorIdFromParent= {currentDoctorId}/>
                         </div>
                         <div class="vl"></div>
-                        <div className='content-right'></div>
+                        <div className='content-right'>
+                            <DoctorExtraInfo doctorIdFromParent= {currentDoctorId}/>
+                        </div>
                     </div>
                   
                     <div className='info-detail'>
