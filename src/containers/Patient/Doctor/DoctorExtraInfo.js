@@ -4,7 +4,7 @@ import '../../HomePage/HomePage.scss';
 import './DoctorExtraInfo.scss';
 import {getExtraInfoDoctorByIdService} from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
-import { FormattedMessage } from 'react-intl';
+//import { FormattedMessage } from 'react-intl';
 import NumberFormat from 'react-number-format';
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { FormattedMessage } from 'react-intl';
-import {LANGUAGES, DATE_FORMAT} from '../../../utils';
+import {LANGUAGES} from '../../../utils';
 import './ManageSchedule.scss';
 import * as actions from '../../../store/actions';
 import Select from 'react-select';

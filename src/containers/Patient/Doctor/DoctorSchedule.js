@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import '../../HomePage/HomePage.scss';
 import './DoctorSchedule.scss';
 import moment from 'moment';
-import localization from 'moment/locale/vi';
+import 'moment/locale/vi'; //tự động dịch sang file vi làm mặc định
 import {getScheduleByDateService} from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
 import { FormattedMessage } from 'react-intl';

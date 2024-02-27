@@ -370,6 +370,9 @@
 .section-outstanding-doctor{
     .item-custom{
         background: $light-blue;
+        .item-img {
+            background-size: cover !important;
+        }
     }
 }
 

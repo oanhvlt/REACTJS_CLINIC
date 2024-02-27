@@ -6,13 +6,14 @@
     .intro{
         display: flex;
         .content-left{
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             background: center center no-repeat;
+            background-size: cover;
             border-radius: 50%;
         }
         .content-right{
-            width: calc(100% - 100px);
+            width: calc(100% - 80px);
             display: flex;
             flex-direction: column;
             padding-left: 15px;

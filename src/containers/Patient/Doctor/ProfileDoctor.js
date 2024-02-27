@@ -5,6 +5,9 @@ import { LANGUAGES } from '../../../utils';
 import './ProfileDoctor.scss';
 import {getProfileDoctorByIdService} from '../../../services/userService';
 import NumberFormat from 'react-number-format';
+import _ from 'lodash';
+import moment from 'moment';
+import 'moment/locale/vi'; //tự động dịch sang file vi làm mặc định
 
 class ProfileDoctor extends Component {
 
@@ -17,7 +20,7 @@ class ProfileDoctor extends Component {
 
 
     async componentDidMount() {
-        let data = await this.getInfoDoctor(this.props.doctorId);
+        let data = await this.getInfoDoctor(this.props.doctorIdFromParent);
         this.setState({
             dataProfile: data
         })
@@ -38,22 +41,40 @@ class ProfileDoctor extends Component {
         if(prevProps.language !== this.props.language){
            
         }  
-        if(prevProps.doctorId !== this.props.doctorId){
-            //this.getInfoDoctor(this.props.doctorId);
+        if(prevProps.doctorIdFromParent !== this.props.doctorIdFromParent){
+            //this.getInfoDoctor(this.props.doctorIdFromParent);
         }   
        
     }
 
-    render() {
-        console.log('check state: ', this.state)
-        let {dataProfile} = this.state;
+    renderTimeBooking = (dataTime) => {
         let {language} = this.props;
+        if(dataTime && !_.isEmpty(dataTime)){
+            let time = language === LANGUAGES.VI ? dataTime.timeTypeData.valueVi : dataTime.timeTypeData.valueEn;
+            //convert string to date in js // +dataTime.date: convert string to number
+            let date = language === LANGUAGES.VI ? 
+            moment.unix(+dataTime.date/1000).format('dddd - DD/MM/YYYY')
+            : moment.unix(+dataTime.date/1000).locale('en').format('ddd - MM/DD/YYYY');
+
+            return(
+                <>
+                    <div>{time} - {date}</div>
+                    <div>Miễn phí đặt lịch</div>
+                </>
+            )
+        }
+       
+    }
+
+    render() {
+        let {dataProfile} = this.state;
+        let {language, isShowDescriptionDoctor, dataTime} = this.props;
         let nameVi = '', nameEn = '';
         if(dataProfile && dataProfile.positionData){
             nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.lastName} ${dataProfile.firstName}`;
             nameEn = `${dataProfile.positionData.valueEn}, ${dataProfile.firstName} ${dataProfile.lastName}`;
         }
-        
+        //console.log('check state: ', this.state)
         return ( 
             <div className='profile-doctor-container'>
                 <div className='intro'>
@@ -66,12 +87,21 @@ class ProfileDoctor extends Component {
                             {language === LANGUAGES.VI ? nameVi : nameEn}
                         </div>
                         <div className='down'>
-                            {dataProfile && dataProfile.Markdown && dataProfile.Markdown.description
-                                && 
-                                <span>
-                                    {dataProfile.Markdown.description}
-                                </span>
+                            {isShowDescriptionDoctor === true ?
+                                <>
+                                    {dataProfile && dataProfile.Markdown && dataProfile.Markdown.description
+                                        && 
+                                        <span>
+                                            {dataProfile.Markdown.description}
+                                        </span>
+                                    }
+                                </>
+                                :
+                                <>
+                                    {this.renderTimeBooking(dataTime)}
+                                 </>
                             }
+                        
                         </div>
                     </div>
                 </div>
