@@ -1,0 +1,30 @@
+@import "../../../styles/base";
+
+.profile-doctor-container{
+
+
+    .intro{
+        display: flex;
+        .content-left{
+            width: 100px;
+            height: 100px;
+            background: center center no-repeat;
+            border-radius: 50%;
+        }
+        .content-right{
+            width: calc(100% - 100px);
+            display: flex;
+            flex-direction: column;
+            padding-left: 15px;
+    
+            .up{
+                //padding-top: 15px;
+                font-weight: 600;
+            }
+            .down{
+                padding-top: 5px;
+                text-align: justify;
+            }
+        }
+    }
+}

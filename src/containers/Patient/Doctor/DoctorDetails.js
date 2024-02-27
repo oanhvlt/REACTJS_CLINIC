@@ -9,6 +9,7 @@ import { LANGUAGES } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
 import DoctorExtraInfo from './DoctorExtraInfo';
 
+
 class DoctorDetails extends Component {
 
     constructor(props) {
@@ -85,7 +86,7 @@ class DoctorDetails extends Component {
                         <div className='content-left'>
                             <DoctorSchedule doctorIdFromParent= {currentDoctorId}/>
                         </div>
-                        <div class="vl"></div>
+                        <div className="vl"></div>
                         <div className='content-right'>
                             <DoctorExtraInfo doctorIdFromParent= {currentDoctorId}/>
                         </div>
