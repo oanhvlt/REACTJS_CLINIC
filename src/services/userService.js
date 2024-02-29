@@ -80,6 +80,10 @@ const getProfileDoctorByIdService = (doctorId) =>{
 const bookAppointmentService = (data) =>{
     return axios.post(`/api/patient-book-appointment`, data);
 }
+//verify-book-appointment
+const verifyBookAppointmentService = (data) =>{
+    return axios.post(`/api/verify-book-appointment`, data);
+}
 
 export {
     handleLoginApi,
@@ -98,6 +102,7 @@ export {
     getScheduleByDateService,
     getExtraInfoDoctorByIdService,
     getProfileDoctorByIdService,
-    bookAppointmentService
+    bookAppointmentService,
+    verifyBookAppointmentService
 }
 

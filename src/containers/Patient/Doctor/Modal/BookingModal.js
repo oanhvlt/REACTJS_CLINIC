@@ -30,7 +30,8 @@ class BookingModal extends Component {
             selectedGender: '',
             doctorId:'',
             genders: '',
-            timeType: ''
+            timeType: '',
+            scheduleDate: ''
         }
     }
 
@@ -102,13 +103,15 @@ class BookingModal extends Component {
         //validate input
         let timeString = this.buildTimeBooking(this.props.dataTime);
         let doctorName = this.buildDoctorName(this.props.dataTime);
+        let date = this.props.dataTime.date;
         let res = await bookAppointmentService({
             fullName: this.state.fullName,
             phoneNumber: this.state.phoneNumber,
             email: this.state.email,
             address: this.state.address,
             reason: this.state.reason,
-            date: new Date(this.state.birthday).getTime(),
+            //date: new Date(this.state.birthday).getTime(),
+            date: date,
             selectedGender: this.state.selectedGender.value,
             doctorId: this.state.doctorId,
             timeType: this.state.timeType,

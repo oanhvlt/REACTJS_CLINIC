@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //import HomeHeader from '../../HomePage/HomeHeader/HomeHeader_banner';
+import HomeMenu from '../../HomePage/HomeHeader/HomeMenu';
 import '../../HomePage/HomePage.scss';
 import './DoctorDetails.scss';
-import HomeMenu from '../../HomePage/HomeHeader/HomeMenu';
+
 import {getDoctorDetailsService} from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
