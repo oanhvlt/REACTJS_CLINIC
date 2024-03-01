@@ -113,6 +113,6 @@ export {
     bookAppointmentService,
     verifyBookAppointmentService,
     saveSpecialtytService,
-    getAllSpecialtiesService
+    getAllSpecialtiesService,
 }
 

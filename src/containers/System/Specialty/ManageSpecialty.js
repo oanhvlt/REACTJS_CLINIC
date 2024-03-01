@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import './ManageSpecialty.scss';
 // import { FormattedMessage } from 'react-intl';
 // import { LANGUAGES } from '../../../utils';
-import {saveSpecialtytService, 
-    getAllSpecialtiesService} from '../../../services/userService';
+import {saveSpecialtytService} from '../../../services/userService';
 //use Markdown
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
@@ -83,7 +82,7 @@ class ManageSpecialty extends Component {
     render() {
         
         let {name, contentMarkdown} = this.state
-        let {language} = this.props;
+
         return ( 
             <div className='manage-specialty-container'>
                 <div className='ms-title'>Quản lý chuyên khoa</div>

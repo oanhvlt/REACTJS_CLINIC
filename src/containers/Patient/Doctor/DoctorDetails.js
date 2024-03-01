@@ -22,7 +22,7 @@ class DoctorDetails extends Component {
     }
 
     //get param pass from router 'this.props.match.params.'
-    //.id: by router at App.js >>  DOCTOR_DETAILS: '/doctor-detals/:id'
+    //.id: by router at App.js >>  DOCTOR_DETAILS: '/doctor-details/:id'
     //console.log('check params: ',  this.props.match.params.id); 
     async componentDidMount() {
         if(this.props.match && this.props.match.params && this.props.match.params.id){

@@ -30,7 +30,7 @@ class OutStandingDoctor extends Component {
     handleViewDoctorDetails = (doctor) => {
         //use property 'history.push' to get details page
         if(this.props.history){
-            this.props.history.push(`doctor-detals/${doctor.id}`);
+            this.props.history.push(`doctor-details/${doctor.id}`);
         }
        
     }

@@ -6,7 +6,8 @@ import {getAllCodeService,
     editUserService,
     getTopDoctorsHomeService,
     getAllDoctorsService,
-    saveInfoDoctorService} from '../../services/userService';
+    saveInfoDoctorService,
+    getAllSpecialtiesService} from '../../services/userService';
 import { toast } from "react-toastify";
 
 //gender
@@ -267,10 +268,10 @@ export const saveInfoDoctor = (data) => {
             if(res && res.errCode === 0){
                 toast.success("Create doctor's info succeed!");
             }else{
-                toast.error("Create doctor's info failed!");
+                toast.error(`Create doctor's info failed! ${res.errMessage}`);
             }
         } catch (e) {
-            toast.error("Create doctor's info failed!");
+            toast.error(`Create doctor's info error! `);
             console.log('saveInfoDoctorFailed error: ', e)
         }
        
@@ -311,14 +312,17 @@ export const getRequiredDoctorInfo = () => {
             let resPrice = await getAllCodeService('PRICE');
             let resPayment = await getAllCodeService('PAYMENT');
             let resProvince = await getAllCodeService('PROVINCE');
+            let resSpecialty = await getAllSpecialtiesService();
             //success
             if (resPrice && resPrice.errCode === 0
                 && resPayment && resPayment.errCode === 0
-                && resProvince && resProvince.errCode === 0) {
+                && resProvince && resProvince.errCode === 0
+                && resSpecialty && resSpecialty.errCode === 0) {
                     let result = {
                         resPrice: resPrice.data,
                         resPayment: resPayment.data,
                         resProvince: resProvince.data,
+                        resSpecialty: resSpecialty.data,
                     }
                 dispatch({
                     type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_SUCCESS,

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 // Import css files carousel
 import Slider from "react-slick";
 import { getAllSpecialtiesService } from '../../../services/userService';
+//use history.push: directly to a router
+import { withRouter } from 'react-router';
 
 class Specialty extends Component {
 
@@ -22,6 +24,14 @@ class Specialty extends Component {
         }
     }
 
+    handleViewDetails = (item) => {
+        //use property 'history.push' to get details page
+        if(this.props.history){
+            this.props.history.push(`specialty-details/${item.id}`);
+        }
+       
+    }
+
     render() {     
         let {dataSpecialty} = this.state;
         return (
@@ -35,7 +45,8 @@ class Specialty extends Component {
                         {dataSpecialty && dataSpecialty.length > 0 &&
                             dataSpecialty.map((item, index) => {
                                 return (
-                                    <div className='section-item' key={index}>
+                                    <div className='section-item' key={index}
+                                    onClick={() => this.handleViewDetails(item)}>
                                     <div className='item-custom'>
                                         <div className='item-img item-img-specialty'
                                         style={{backgroundImage: `url(${item.image})`}} >
@@ -68,4 +79,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Specialty));
