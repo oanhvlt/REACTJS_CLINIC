@@ -20,6 +20,7 @@
             &:first-child {
                 border-left: 1px solid $border;
             }
+            
         }
         .menu-list {
             display: none;
@@ -48,6 +49,7 @@
                 .menu-link {
                     text-decoration: none;
                     color: $text-in-light;
+                    cursor: pointer;
                 }
                 .sub-menu-list {
                     display: none;

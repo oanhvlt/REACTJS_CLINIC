@@ -78,7 +78,7 @@ class ModalUser extends Component {
         //console.log(this.props.isOpen);
         //reactstrap https://reactstrap.github.io/?path=/docs/components-modal--modal
         return (
-            <Modal isOpen={this.props.isOpenModalUser}   
+            <Modal isOpen={this.props.isOpenModalUserFromParent}   
                 toggle={ ()=>{this.toggle()} }  
                 className={"modal-user-container"} 
                 size='lg' 

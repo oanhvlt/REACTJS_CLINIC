@@ -16,7 +16,7 @@ export const adminMenu = [
             // },
             {
                 name: 'menu_cms.admin.crud',
-                link: '/system/user-manage'
+                link: '/system/user-manage' //this link is a Route initial at System.js
             },
             {
                 name: 'menu_cms.admin.crud-redux',

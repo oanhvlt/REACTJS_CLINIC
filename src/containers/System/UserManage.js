@@ -127,7 +127,7 @@ class UserManage extends Component {
         return (
             <div className="users-container">
                 <ModalUser 
-                    isOpenModalUser={this.state.isOpenModalUser} 
+                    isOpenModalUserFromParent={this.state.isOpenModalUser} 
                     toggleUserModalFromParent = {this.toggleUserModal}
                     createNewUser = {this.createNewUser} 
                 />
@@ -135,7 +135,7 @@ class UserManage extends Component {
                     //to componentDidMount's generated when click Edit button 
                     this.state.isOpenModaEditlUser &&
                     <ModalEditUser 
-                        isOpenModalUser={this.state.isOpenModaEditlUser} 
+                    isOpenModalUserFromParent={this.state.isOpenModaEditlUser} 
                         toggleUserModalFromParent = {this.toggleUseEditModal}
                         currentUser={this.state.userEdit}
                         editUser = {this.editUser} 
@@ -161,7 +161,7 @@ class UserManage extends Component {
                         </tr>           
                         {arrUsers && arrUsers.map((item, index) => {
                                 return(
-                                    <tr>
+                                    <tr key={index}>
                                         <td>{item.email}</td>
                                         <td>{item.firstName}</td>
                                         <td>{item.lastName}</td>

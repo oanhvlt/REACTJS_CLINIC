@@ -84,6 +84,14 @@ const bookAppointmentService = (data) =>{
 const verifyBookAppointmentService = (data) =>{
     return axios.post(`/api/verify-book-appointment`, data);
 }
+//save-specialty
+const saveSpecialtytService = (data) =>{
+    return axios.post(`/api/save-specialty`, data);
+}
+//get-all-specialties
+const getAllSpecialtiesService = () => {
+    return axios.get(`/api/get-all-specialties`);
+}
 
 export {
     handleLoginApi,
@@ -103,6 +111,8 @@ export {
     getExtraInfoDoctorByIdService,
     getProfileDoctorByIdService,
     bookAppointmentService,
-    verifyBookAppointmentService
+    verifyBookAppointmentService,
+    saveSpecialtytService,
+    getAllSpecialtiesService
 }
 

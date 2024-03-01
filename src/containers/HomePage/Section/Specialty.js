@@ -2,11 +2,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // Import css files carousel
 import Slider from "react-slick";
+import { getAllSpecialtiesService } from '../../../services/userService';
 
 class Specialty extends Component {
 
-    render() {     
+    constructor(props){
+        super(props);
+        this.state = {
+            dataSpecialty: []
+        }
+    }
 
+    async componentDidMount(){
+        let res = await getAllSpecialtiesService();
+        if(res && res.errCode === 0){
+            this.setState({
+                dataSpecialty: res.data ? res.data : ''
+            })
+        }
+    }
+
+    render() {     
+        let {dataSpecialty} = this.state;
         return (
         <div className='section-container section-specialty'>
             <div className='section-header'>
@@ -15,36 +32,22 @@ class Specialty extends Component {
             </div>
             <div className='section-body'>
                     <Slider {...this.props.settings}>
-                        <div className='section-item'>
-                            <div className='item-custom'>
-                                <div className='item-img item-img-specialty'></div>
-                                <div className='item-text'>Châm cứu</div>
-                            </div>
-                        </div>   
-                        <div className='section-item'>
-                            <div className='item-custom'>
-                                <div className='item-img item-img-specialty'></div>
-                                <div className='item-text'>Cơ xương khớp</div>
-                            </div>
-                        </div> 
-                        <div className='section-item'>
-                            <div className='item-custom'>                            
-                                <div className='item-img item-img-specialty'></div>
-                                <div className='item-text'>Da liễu</div>
-                            </div>
-                        </div> 
-                        <div className='section-item'>
-                            <div className='item-custom'>                                   
-                                <div className='item-img item-img-specialty'></div>
-                                <div className='item-text'>Y học cổ truyền</div>
-                            </div>
-                        </div> 
-                        <div className='section-item'>
-                            <div className='item-custom'> 
-                                <div className='item-img item-img-specialty'></div>
-                                <div className='item-text'>sức khoẻ tâm thần</div>
-                            </div>
-                        </div> 
+                        {dataSpecialty && dataSpecialty.length > 0 &&
+                            dataSpecialty.map((item, index) => {
+                                return (
+                                    <div className='section-item' key={index}>
+                                    <div className='item-custom'>
+                                        <div className='item-img item-img-specialty'
+                                        style={{backgroundImage: `url(${item.image})`}} >
+
+                                        </div>
+                                        <div className='item-text'>{item.name}</div>
+                                    </div>
+                                </div>   
+                                )
+                            })
+                        }
+                       
                     </Slider>
             </div>                       
         </div>  
