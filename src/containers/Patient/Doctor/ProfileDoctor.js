@@ -8,6 +8,7 @@ import NumberFormat from 'react-number-format';
 import _ from 'lodash';
 import moment from 'moment';
 import 'moment/locale/vi'; //tự động dịch sang file vi làm mặc định
+import {Link} from 'react-router-dom';
 
 class ProfileDoctor extends Component {
 
@@ -42,7 +43,10 @@ class ProfileDoctor extends Component {
            
         }  
         if(prevProps.doctorIdFromParent !== this.props.doctorIdFromParent){
-            //this.getInfoDoctor(this.props.doctorIdFromParent);
+            let data = await this.getInfoDoctor(this.props.doctorIdFromParent);
+            this.setState({
+                dataProfile: data
+            })
         }   
        
     }
@@ -68,7 +72,8 @@ class ProfileDoctor extends Component {
 
     render() {
         let {dataProfile} = this.state;
-        let {language, isShowDescriptionDoctor, dataTime} = this.props;
+        let {language, isShowDescriptionDoctor, dataTime, 
+            isShowLinkDetails, isShowPrice, doctorIdFromParent} = this.props;
         let nameVi = '', nameEn = '';
         if(dataProfile && dataProfile.positionData){
             nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.lastName} ${dataProfile.firstName}`;
@@ -78,9 +83,13 @@ class ProfileDoctor extends Component {
         return ( 
             <div className='profile-doctor-container'>
                 <div className='intro'>
-                    <div className='content-left'
-                    style={{backgroundImage: `url(${dataProfile && dataProfile.image ? dataProfile.image: ''})`}} 
-                    >  
+                    <div className='content-left'>
+                        <div className='doctor-image'
+                        style={{backgroundImage: `url(${dataProfile && dataProfile.image ? dataProfile.image: ''})`}} 
+                        />  
+                        {isShowLinkDetails === true &&
+                           <Link className='link-details' to = {`/doctor-details/${doctorIdFromParent}`}>Xem thêm</Link>
+                        }
                     </div>
                     <div className='content-right'>
                         <div className='up'>
@@ -105,26 +114,29 @@ class ProfileDoctor extends Component {
                         </div>
                     </div>
                 </div>
-                <div className='price'>
-                    Giá khám:
-                    {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.VI ?
-                        <NumberFormat value={dataProfile.Doctor_Info.priceData.valueVi} 
-                            displayType={'text'} 
-                            thousandSeparator={true} 
-                            suffix={'VNĐ.'} 
-                            className='currency'/> 
-                        : ''
-                    }
-                    {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.EN ?
-                        
-                        <NumberFormat value={dataProfile.Doctor_Info.priceData.valueEn} 
-                            displayType={'text'} 
-                            thousandSeparator={true} 
-                            suffix={'USD.'} 
-                            className='currency'/> 
-                        : ''
-                    }
-                </div>
+                {isShowPrice === true &&
+                    <div className='price'>
+                        Giá khám:
+                        {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.VI ?
+                            <NumberFormat value={dataProfile.Doctor_Info.priceData.valueVi} 
+                                displayType={'text'} 
+                                thousandSeparator={true} 
+                                suffix={'VNĐ.'} 
+                                className='currency'/> 
+                            : ''
+                        }
+                        {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.EN ?
+                            
+                            <NumberFormat value={dataProfile.Doctor_Info.priceData.valueEn} 
+                                displayType={'text'} 
+                                thousandSeparator={true} 
+                                suffix={'USD.'} 
+                                className='currency'/> 
+                            : ''
+                        }
+                    </div>
+                }
+               
             </div>
            
         );

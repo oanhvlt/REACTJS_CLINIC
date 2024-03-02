@@ -29,9 +29,6 @@ class SpecialtyDetails extends Component {
     async componentDidMount() {
         if(this.props.match && this.props.match.params && this.props.match.params.id){
             let id = this.props.match.params.id;
-            this.setState({
-                currentDoctorId: id
-            })
             let res = await getSpecialtyDoctorByIdService({
                 id,
                 location: 'ALL'
@@ -49,14 +46,25 @@ class SpecialtyDetails extends Component {
                         })
                     }
                 }
+                let dataProvince = resProvince.data;
+                if(dataProvince && dataProvince.length > 0){
+                    dataProvince.unshift({ //pust elem vào đầu mảng
+                        keyMap: 'ALL',
+                        type: 'PROVINCE',
+                        valueVi: 'Toàn quốc',
+                        valueEn: 'ALL',
+                    })
+                    
+                }
                 this.setState({
                     dataSpecialty: res.data,
                     arrDoctorId: arrDoctorId,
-                    listProvince: resProvince.data,
+                    listProvince: dataProvince ? dataProvince : [],
                 })
             }
         }
     }
+
     async componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.language !== this.props.language){
            
@@ -64,8 +72,35 @@ class SpecialtyDetails extends Component {
        
     }
 
-    handleOnchangeSelect = (e) => {
+    handleOnchangeSelect = async (e) => {
         console.log ('check onchange: ', e.target.value)
+        if(this.props.match && this.props.match.params && this.props.match.params.id){
+            let id = this.props.match.params.id;
+            let location = e.target.value;
+
+            let res = await getSpecialtyDoctorByIdService({
+                id,
+                location: location
+            });
+
+            if(res && res.errCode === 0){
+                let data = res.data;
+                let arrDoctorId = [];
+                if(data && !_.isEmpty(data)){
+                    let arr = data.doctorSpecialty;
+                    if(arr && arr.length > 0) {
+                        arr.map(item => {
+                            arrDoctorId.push(item.doctorId)
+                        })
+                    }
+                }
+                this.setState({
+                    dataSpecialty: res.data,
+                    arrDoctorId: arrDoctorId,
+                })
+            }
+
+        }
     }
 
     render() {
@@ -97,6 +132,7 @@ class SpecialtyDetails extends Component {
                     </div>
                     {arrDoctorId && arrDoctorId.length > 0 &&
                         arrDoctorId.map((item, index) => {
+                            console.log('item: ', item)
                             return(
                                 <div className='eachDotor' key={index} >
                                     <div className='dt-content-left'>
@@ -104,7 +140,8 @@ class SpecialtyDetails extends Component {
                                             <ProfileDoctor
                                             doctorIdFromParent = {item}
                                             isShowDescriptionDoctor = {true}
-                                            //dataTime = {dataTime}
+                                            isShowLinkDetails = {true}
+                                            isShowPrice = {false}
                                             />
                                         </div>
                                     </div>

@@ -3,13 +3,33 @@
 .specialty-details-container{
 
     .description{
-        border: 1px solid $border;
+        //border: 1px solid $border;
         margin: 15px 0;
         padding: 10px;
+        background: $bg-gray;
+        h3{
+            font-size: 17px;
+            font-weight: 600;
+        }
+        p{
+            font-size: 15px;
+        }
+        li{
+            font-size: 14px;
+        }
     }
 
     .search-sp-doctor{
-
+        select{
+            height: 35px;
+            padding: 8px 12px;
+            outline: none;
+            border: none;
+            border-radius: 3px;
+            background-color: $light-blue;
+            color: $colormain;
+            cursor: pointer;
+        }
     }
 
     .eachDotor{
