@@ -98,6 +98,11 @@ const getSpecialtyDoctorByIdService = (data) =>{
     return axios.get(`/api/get-specialty-doctor-by-id?id=${data.id}&location=${data.location}`);
 }
 
+//save-clinic
+const saveClinictService = (data) =>{
+    return axios.post(`/api/save-clinic`, data);
+}
+
 export {
     handleLoginApi,
     getAllUsers,
@@ -119,6 +124,7 @@ export {
     verifyBookAppointmentService,
     saveSpecialtytService,
     getAllSpecialtiesService,
-    getSpecialtyDoctorByIdService
+    getSpecialtyDoctorByIdService,
+    saveClinictService
 }
 
