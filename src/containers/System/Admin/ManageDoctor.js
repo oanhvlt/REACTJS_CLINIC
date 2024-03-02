@@ -235,6 +235,9 @@ class ManageDoctor extends Component {
                 nameClinic: '',
                 addressClinic: '',
                 note: '',
+                selectedPrice: '',
+                selectedPayment: '',
+                selectedProvince: '',
                 selectedSpecialty: '',
             });
         }

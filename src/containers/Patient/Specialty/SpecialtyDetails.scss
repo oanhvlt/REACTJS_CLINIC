@@ -2,12 +2,16 @@
 
 .specialty-details-container{
 
-
-
     .description{
-        border: 1px solid red;
-        height: 200px;
+        border: 1px solid $border;
+        margin: 15px 0;
+        padding: 10px;
     }
+
+    .search-sp-doctor{
+
+    }
+
     .eachDotor{
         padding: 10px 0px;
         display: flex;

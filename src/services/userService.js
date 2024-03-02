@@ -93,6 +93,11 @@ const getAllSpecialtiesService = () => {
     return axios.get(`/api/get-all-specialties`);
 }
 
+//get-specialty-doctor-by-id
+const getSpecialtyDoctorByIdService = (data) =>{
+    return axios.get(`/api/get-specialty-doctor-by-id?id=${data.id}&location=${data.location}`);
+}
+
 export {
     handleLoginApi,
     getAllUsers,
@@ -114,5 +119,6 @@ export {
     verifyBookAppointmentService,
     saveSpecialtytService,
     getAllSpecialtiesService,
+    getSpecialtyDoctorByIdService
 }
 
