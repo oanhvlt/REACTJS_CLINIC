@@ -103,6 +103,17 @@ const saveClinictService = (data) =>{
     return axios.post(`/api/save-clinic`, data);
 }
 
+//get-all-clinic
+const getAllClinicsService = () => {
+    return axios.get(`/api/get-all-clinics`);
+}
+
+//get-clinic-doctor-by-id
+const getClinicDetailsByIdService = (data) =>{
+    return axios.get(`/api/get-clinic-doctor-by-id?id=${data.id}`);
+}
+
+
 export {
     handleLoginApi,
     getAllUsers,
@@ -125,6 +136,8 @@ export {
     saveSpecialtytService,
     getAllSpecialtiesService,
     getSpecialtyDoctorByIdService,
-    saveClinictService
+    saveClinictService,
+    getAllClinicsService,
+    getClinicDetailsByIdService
 }
 

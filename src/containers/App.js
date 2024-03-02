@@ -14,6 +14,7 @@ import ConfirmModal from '../components/ConfirmModal';
 import HomePage from './HomePage/HomePage.js';
 import DoctorDetails from './Patient/Doctor/DoctorDetails.js';
 import SpecialtyDetails from './Patient/Specialty/SpecialtyDetails.js';
+import ClinicDetails from './Patient/Clinic/ClinicDetails.js';
 
 //import CustomScrollbars to use Scrollbars
 import CustomScrollbars from '../components/CustomScrollbars.js'
@@ -56,7 +57,8 @@ class App extends Component {
                                     
                                     <Route path={path.HOMEPAGE} component={HomePage} />    
                                     <Route path={path.DOCTOR_DETAILS} component={DoctorDetails} />  
-                                    <Route path={path.SPECIALTY_DETAILS} component={SpecialtyDetails} />  
+                                    <Route path={path.SPECIALTY_DETAILS} component={SpecialtyDetails} />
+                                    <Route path={path.CLINIC_DETAILS} component={ClinicDetails} />    
                                     <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail} />  
                                 </Switch>
                             </CustomScrollbars>    
