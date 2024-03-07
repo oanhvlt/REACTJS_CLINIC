@@ -26,6 +26,9 @@
             }
             .down{
                 padding-top: 10px;
+                .like-share-plugin{
+                    margin: 10px 0 20px 0;
+                }
             }
         }
     }
@@ -58,6 +61,16 @@
         padding: 20px;
         background: $bg-gray;
         //font-family: Montserrat,sans-serif!important;
+        h1,h2,h3{
+            font-size: 17px;
+        }
+        img{
+            width: 100%;
+        }
+    }
+
+    .comment-doctor{
+        padding: 10px 100px;
     }
 
 }

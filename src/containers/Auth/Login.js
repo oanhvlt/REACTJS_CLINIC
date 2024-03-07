@@ -46,7 +46,7 @@ class Login extends Component {
                 console.log('Login success!');
             }
             //log data response from api /api/login from server
-            console.log('hdit:', data);
+            //console.log('hdit:', data);
 
         } catch (e) {
            if(e.response){

@@ -31,28 +31,28 @@ class HandBook extends Component {
                                 <div className='item-custom'>
                                    
                                     <div className='item-img item-img-handbook'></div>
-                                    <div className='item-text'>Bệnh viện </div>
+                                    <div className='item-text'>Cẩm nang </div>
                                 </div>
                             </div> 
                             <div className='section-item'>
                                 <div className='item-custom'>
                                     
                                     <div className='item-img item-img-handbook'></div>
-                                    <div className='item-text'>Bệnh viện </div>
+                                    <div className='item-text'>Cẩm nang </div>
                                 </div>
                             </div> 
                             <div className='section-item'>
                                 <div className='item-custom'>
                                   
                                     <div className='item-img item-img-handbook'></div>
-                                    <div className='item-text'>Bệnh viện </div>
+                                    <div className='item-text'>Cẩm nang </div>
                                 </div>
                             </div> 
                             <div className='section-item'>
                                 <div className='item-custom'>
                                   
                                     <div className='item-img item-img-handbook'></div>
-                                    <div className='item-text'>Bệnh viện </div>
+                                    <div className='item-text'>Cẩm nang </div>
                                 </div>
                             </div> 
                         </Slider>
